@@ -34,6 +34,41 @@ public class Card {
         public int getPointValue() {
             // TODO: this is your job (Blackjack, p. 95).
             // Until you finish it, every card is worth 0.
+            if(faceUp) {
+                switch (this.value) {
+                    case "2" -> {
+                        return 2;
+                    }
+                    case "3" -> {
+                        return 3;
+                    }
+                    case "4" -> {
+                        return 4;
+                    }
+                    case "5" -> {
+                        return 5;
+                    }
+                    case "6" -> {
+                        return 6;
+                    }
+                    case "7" -> {
+                        return 7;
+                    }
+                    case "8" -> {
+                        return 8;
+                    }
+                    case "9" -> {
+                        return 9;
+                    }
+                    case "10", "j", "q", "k" -> {
+                        return 10;
+                    }
+                    case "a" -> {
+                        return 11;
+                    }
+                    default -> System.out.println("No card value");
+                }
+            }
             return 0;
         }
 
