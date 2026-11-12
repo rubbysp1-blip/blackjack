@@ -8,46 +8,49 @@ public class App {
    // public static Hand hands;
     public static void main(String[] args) {
 
-        System.out.println("""
-                Player One
-                -----------""");
-
-        System.out.println("""
-                \nPlayer Two
-                -----------""");
-
-
-//        if(player1 > player2 && player1 <= 21){
-//            System.out.print("\nPlayer 1 Wins!");
-//        }else{
-//            System.out.print("\nPlayer 2 Wins!");
-//        }
-//
-//        if(player1 == player2){
-//            System.out.print("\nIt's A Tie!");
-//        }
-
         Deck deck = new Deck();
         ArrayList<Player>players = new ArrayList<>();
-
-        for(int index = 1; index < 3; index++){
-            System.out.println("Player " + index + " name: ");
+        //Loop to get each player name and store it into player class and players array
+        for(int index = 1; index < 4; index++){
+            System.out.print("Player " + index + " name: ");
             String playerName = input.nextLine();
             Player player = new Player(playerName);
+            players.add(player);
 
         }
 
-        Player player = new Player("Ruby");
         deck.shuffle();
+
+        //for each player in the players array list give them a hand of 2 cards
         for(Player player1 : players){
+            System.out.println("\n" + player1.getPlayerName() );
             for(int count = 1; count <= 2; count++){
                 Card card = deck.deal();
 
-                player.getHand().deal(card);
+                player1.getHand().deal(card);
                 System.out.println(card.toString());
+
+            }
+
+        }
+
+        int winningPlayer = 0;
+        Player winnerName = null;
+
+        for(Player player: players){
+            int playerTotalValue = player.getHand().getValue();
+            if(playerTotalValue <= 21){
+                if(playerTotalValue > winningPlayer){
+                    winningPlayer = playerTotalValue;
+                    winnerName = player;
+                }else if (winningPlayer == playerTotalValue){
+                    System.out.println("Tie");
+                }
             }
         }
 
+        System.out.println("\nThe winner is: " + winnerName.getPlayerName());
+        System.out.println("With a score of: " + winningPlayer);
     }
 
 
