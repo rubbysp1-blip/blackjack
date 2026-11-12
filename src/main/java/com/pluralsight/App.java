@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
@@ -10,13 +11,11 @@ public class App {
         System.out.println("""
                 Player One
                 -----------""");
-        handCardsToPlayer();
         int player1 = hands.getValue();
 
         System.out.println("""
                 \nPlayer Two
                 -----------""");
-        handCardsToPlayer();
         int player2 = hands.getValue();
 
 
@@ -29,22 +28,18 @@ public class App {
         if(player1 == player2){
             System.out.print("\nIt's A Tie!");
         }
-
-    }
-
-    private static void handCardsToPlayer() {
         Deck deck = new Deck();
-        hands = new Hand();
 
+        hands = new Hand();
+        Player player = new Player("Ruby");
         deck.shuffle();
         for(int count = 1; count <= 2; count++){
             Card card = deck.deal();
             hands.deal(card);
+            player.getHand().deal(card);
             System.out.println(card.toString());
         }
-
-
-
     }
+
 
 }

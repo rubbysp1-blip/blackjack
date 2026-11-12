@@ -8,7 +8,7 @@ class CardTest {
 
     @Test
     public void getPointValue_should_returnCardValue(){
-        Card card = new Card("King", "k");
+        Card card = new Card("King", "K");
 
         card.flip();
 
