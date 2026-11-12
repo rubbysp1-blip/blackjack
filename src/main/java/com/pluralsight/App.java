@@ -23,7 +23,8 @@ public class App {
 
         //for each player in the players array list give them a hand of 2 cards
         for(Player player1 : players){
-            System.out.println("\n" + player1.getPlayerName() );
+            System.out.println("\n" + player1.getPlayerName() + "'s Cards");
+            System.out.println("----------------");
             for(int count = 1; count <= 2; count++){
                 Card card = deck.deal();
 
@@ -36,21 +37,28 @@ public class App {
 
         int winningPlayer = 0;
         Player winnerName = null;
-
+        boolean tie = false;
         for(Player player: players){
             int playerTotalValue = player.getHand().getValue();
             if(playerTotalValue <= 21){
                 if(playerTotalValue > winningPlayer){
                     winningPlayer = playerTotalValue;
                     winnerName = player;
+                    tie = false;
                 }else if (winningPlayer == playerTotalValue){
-                    System.out.println("Tie");
+
+                    tie = true;
                 }
             }
         }
 
-        System.out.println("\nThe winner is: " + winnerName.getPlayerName());
-        System.out.println("With a score of: " + winningPlayer);
+        if(tie){
+            System.out.println("\nIt's a tie! Nobody Wins.");
+        }else{
+            System.out.println("\nThe Winner is: " + winnerName.getPlayerName());
+            System.out.println("Score: " + winningPlayer);
+        }
+
     }
 
 
