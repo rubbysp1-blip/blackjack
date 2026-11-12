@@ -66,7 +66,7 @@ public class Card {
                     case "a" -> {
                         return 11;
                     }
-                    default -> System.out.println("No card value");
+                    //default -> System.out.println("No card value");
                 }
             }
             return 0;
@@ -80,4 +80,8 @@ public class Card {
             faceUp = !faceUp;
         }
 
+    @Override
+    public String toString() {
+        return suit + " of " + value;
+    }
 }
