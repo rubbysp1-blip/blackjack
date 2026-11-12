@@ -60,10 +60,10 @@ public class Card {
                     case "9" -> {
                         return 9;
                     }
-                    case "10", "j", "q", "k" -> {
+                    case "10", "J", "Q", "K" -> {
                         return 10;
                     }
-                    case "a" -> {
+                    case "A" -> {
                         return 11;
                     }
                     //default -> System.out.println("No card value");

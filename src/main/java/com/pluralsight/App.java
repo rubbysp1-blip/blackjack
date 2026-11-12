@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class App {
     public static Scanner input = new Scanner(System.in);
-    public static Hand hands = new Hand();
+    public static Hand hands;
     public static void main(String[] args) {
 
         System.out.println("""
@@ -12,6 +12,7 @@ public class App {
                 -----------""");
         handCardsToPlayer();
         int player1 = hands.getValue();
+
         System.out.println("""
                 \nPlayer Two
                 -----------""");
@@ -33,29 +34,17 @@ public class App {
 
     private static void handCardsToPlayer() {
         Deck deck = new Deck();
-        //Hand hand = new Hand();
+        hands = new Hand();
 
         deck.shuffle();
-        Card firstCard = deck.deal();
-        Card secondCard = deck.deal();
-
-        hands.deal(firstCard);
-        hands.deal(secondCard);
-        displayDealCards(firstCard, secondCard);
-
-
-    }
-
-    private static void displayDealCards(Card firstCard, Card secondCard) {
-        System.out.println(firstCard);
-        System.out.println(secondCard);
-    }
-
-    private static void printWinner(Hand hand) {
-        int totalHandValue = hand.getValue();
-        if(totalHandValue <= 21){
-            System.out.println("Player wins");
+        for(int count = 1; count <= 2; count++){
+            Card card = deck.deal();
+            hands.deal(card);
+            System.out.println(card.toString());
         }
+
+
+
     }
 
 }
