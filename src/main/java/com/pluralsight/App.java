@@ -17,6 +17,7 @@ public class App {
         //for each player in the players array list give them a hand of 2 cards
         printEachPlayerDeal();
 
+
         determineWinner();
 
     }
@@ -30,14 +31,19 @@ public class App {
 
                 player1.getHand().deal(card);
                 System.out.println(card.toString());
-
             }
+            printHandValue(player1);
 
         }
     }
 
+    private static void printHandValue(Player player1) {
+        System.out.println("----------------");
+        System.out.printf("Hand Value: %d%n", player1.getHand().getValue());
+    }
+
     private static void getPlayerInformation() {
-        for(int index = 1; index < 4; index++){
+        for (int index = 1; index < 4; index++) {
             System.out.print("Player " + index + " name: ");
             String playerName = input.nextLine();
             Player player = new Player(playerName);
